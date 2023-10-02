@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.scss";
+import Header from "./components/Header";
+import NewTeamForm from "./components/NewTeamForm";
+import Teams from "./components/Teams";
+import TeamsContext from "./context/teamsContext";
 
 function App() {
+
+  const [teams, setTeams] = useState([]);
+  console.log(teams);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <TeamsContext.Provider value={{ teams, setTeams }}>
+      <Header />
+      <NewTeamForm />
+      <Teams teams={teams} />
+    </TeamsContext.Provider>
+
   );
 }
 
