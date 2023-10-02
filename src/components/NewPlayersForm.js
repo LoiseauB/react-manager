@@ -8,17 +8,16 @@ function NewPlayersFrom() {
     const [position, setPosition] = useState('');
     const [teamId, setTeamId] = useState(0);
     const {teams, setTeams} = useContext(TeamsContext);
-    console.log('start');
     
     const handleCreatePlayer = (e) => {
         e.preventDefault();
         const player = {
-            playerName: name,
+            name: name,
             age: age,
             position: position
         }
         let newTeams = [...teams];
-        newTeams[teamId].player.push(player);
+        newTeams[teamId].players.push(player);
         setTeams(newTeams);
         console.log('new player')
     }
@@ -38,7 +37,7 @@ function NewPlayersFrom() {
                     <select type="select" >
                         {teams.map((team, id) => (
                             <>
-                                <option value={id} onClick={() => setTeamId(id)}>{team.name}</option>
+                                <option value={id} onClick={() => console.log(id)}>{team.name}</option>
                             </>
                         ))}
                     </select><br/>
