@@ -11,13 +11,12 @@ function NewTeamForm() {
         e.preventDefault();
         const newTeam = {
             name: teamName,
-            color: TeamColor
+            color: TeamColor,
+            players: []
         };
         setTeams([...teams, newTeam]);
         setTeamName('');
         setTeamColor('');
-
-        console.log(newTeam);
     }
 
     return (

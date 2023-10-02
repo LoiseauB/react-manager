@@ -1,18 +1,47 @@
+import { useContext, useState } from "react";
+import TeamsContext from "../context/teamsContext";
 
 
 function NewPlayersFrom() {
+    const [name, setName] = useState('');
+    const [age, setAge] = useState(0);
+    const [position, setPosition] = useState('');
+    const [teamId, setTeamId] = useState(0);
+    const {teams, setTeams} = useContext(TeamsContext);
+    console.log('start');
+    
+    const handleCreatePlayer = (e) => {
+        e.preventDefault();
+        const player = {
+            playerName: name,
+            age: age,
+            position: position
+        }
+        let newTeams = [...teams];
+        newTeams[teamId].player.push(player);
+        setTeams(newTeams);
+        console.log('new player')
+    }
 
     return (
         <>
             <div>
                 <h2>Ajouter un nouveau joueur</h2>
-                <form>
+                <form onSubmit={handleCreatePlayer}>
                     <label>Nom du joueur: </label><br/>
-                    <input type="text" value=""></input><br/>
+                    <input type="text" value={name} onChange={e => setName(e.target.value)}></input><br/>
                     <label>Age du joueur: </label><br/>
-                    <input type="number" value=""></input><br/>
+                    <input type="number" value={age} onChange={e => setAge(e.target.valueAsNumber)}></input><br/>
                     <label>Poste du joueur: </label><br/>
-                    <input type="text" value=""></input><br/>
+                    <input type="text" value={position} onChange={e => setPosition(e.target.value)}></input><br/>
+                    <label>Choix de l'équipe: </label><br/>
+                    <select type="select" >
+                        {teams.map((team, id) => (
+                            <>
+                                <option value={id} onClick={() => setTeamId(id)}>{team.name}</option>
+                            </>
+                        ))}
+                    </select><br/>
                     <button type="submit">Ajouter</button>
                 </form>
             </div>
