@@ -9,8 +9,10 @@ import Players from "./components/Players";
 
 function App() {
 
+  const [displayTeam, setDisplayTeam] = useState(0);
   const [teams, setTeams] = useState(JSON.parse(localStorage.getItem("teams"))||[]);
   console.log(teams);
+  
   useEffect(()=> {
     localStorage.setItem("teams",JSON.stringify(teams));
 
@@ -19,7 +21,7 @@ function App() {
 
   return (
 
-    <TeamsContext.Provider value={{ teams, setTeams }}>
+    <TeamsContext.Provider value={{ teams, setTeams, setDisplayTeam }}>
       <Header />
       <NewTeamForm />
       <Teams teams={teams} />
@@ -28,6 +30,12 @@ function App() {
           <NewPlayersFrom />
         </>
       )}
+      {/* {teams.map((team, id) => (
+        <>
+        <Players id={id}/>
+        </>
+      ))} */}
+      <Players id={displayTeam}/>
     </TeamsContext.Provider>
 
   );
