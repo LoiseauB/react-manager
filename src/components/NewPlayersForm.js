@@ -8,9 +8,10 @@ function NewPlayersFrom() {
     const [position, setPosition] = useState('');
     const [teamId, setTeamId] = useState(0);
     const {teams, setTeams} = useContext(TeamsContext);
-    
+    console.log(teamId);
     const handleCreatePlayer = (e) => {
         e.preventDefault();
+        if(age <40) {
         const player = {
             name: name,
             age: age,
@@ -20,6 +21,9 @@ function NewPlayersFrom() {
         newTeams[teamId].players.push(player);
         setTeams(newTeams);
         console.log('new player')
+    }else{
+        alert('Trop vieux')
+    }
     }
 
     return (
@@ -34,10 +38,10 @@ function NewPlayersFrom() {
                     <label>Poste du joueur: </label><br/>
                     <input type="text" value={position} onChange={e => setPosition(e.target.value)}></input><br/>
                     <label>Choix de l'équipe: </label><br/>
-                    <select type="select" >
+                    <select type="select" onChange={(e)=> {setTeamId(e.target.value)}} >
                         {teams.map((team, id) => (
                             <>
-                                <option value={id} onClick={() => console.log(id)}>{team.name}</option>
+                                <option value={id}>{team.name}</option>
                             </>
                         ))}
                     </select><br/>

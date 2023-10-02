@@ -13,6 +13,14 @@ function Teams({ teams }) {
                         <li>
                             - Team Color : {team.color}
                         </li>
+                        <ul>
+                        {team.players.map(player =>(
+                        <li>
+                                - {player.name}
+                        </li>
+
+                        ))}
+                        </ul>
                     </>
                 ))}
             </ul>
