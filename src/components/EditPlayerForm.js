@@ -41,7 +41,6 @@ function EditPlayerForm ({teamId}) {
                 <input type="number" value={age} onChange={e => setAge(e.target.valueAsNumber)}></input><br/>
                 <label>Poste du joueur: </label><br/>
                 <input type="text" value={position} onChange={e => setPosition(e.target.value)}></input><br/>
-                <label>Choix de l'équipe: </label><br/>
                 <button type="submit">Modifier</button>
             </form>
         </div>
