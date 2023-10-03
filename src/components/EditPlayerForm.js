@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import TeamsContext from "../context/teamsContext";
 import PlayerContext from "../context/playerContext";
+import PageContext from "../context/pageContext";
 
 function EditPlayerForm ({teamId}) {
   const {teams, setTeams} = useContext(TeamsContext);
@@ -10,6 +11,7 @@ function EditPlayerForm ({teamId}) {
   const [age, setAge] = useState(player.age);
   const [position, setPosition] = useState(player.position);
   const [newTeamId, setNewTeamId] = useState(teamId);
+  const {setCurrentPage} = useContext(PageContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +26,7 @@ function EditPlayerForm ({teamId}) {
       newTeams[newTeamId].players.push(player); // on insert les nouvelles info
       setTeams(newTeams);
       setPlayerId(null);
+      setCurrentPage('players');
     }else{
       alert('Trop vieux')
     }
