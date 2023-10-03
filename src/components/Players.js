@@ -4,7 +4,7 @@ import PlayerContext from "../context/playerContext";
 import PageContext from "../context/pageContext";
 
 function Players({id}) {
-    const{teams, setTeamId} = useContext(TeamsContext);
+    const{teams, setTeamId , setTeams} = useContext(TeamsContext);
     const {setPlayerId} = useContext(PlayerContext);
     const {setCurrentPage} = useContext(PageContext);
 
@@ -12,6 +12,11 @@ function Players({id}) {
         setPlayerId(index);
         setTeamId(id);
         setCurrentPage('edit-player')
+    }
+    const handleDelete = (index) => {
+      let newTeams = [...teams];
+      newTeams[id].players.splice(index, 1);
+      setTeams(newTeams);
     }
 
     return (
@@ -22,8 +27,9 @@ function Players({id}) {
             <li key={player.id}>
               <span>Nom:</span> {player.name} <br />
               <span>Age:</span> {player.age} <br />
-              <span>Poste:</span> {player.position}
+              <span>Poste:</span> {player.position} <br />
               <button onClick={()=>handleClick(index)}>Modifier</button>
+              <button onClick={()=>handleDelete(index)}>Supprimer</button>
             </li>
           ))}
         </ul>

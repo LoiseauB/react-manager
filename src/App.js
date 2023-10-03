@@ -9,6 +9,7 @@ import Players from "./components/Players";
 import PlayerContext from "./context/playerContext";
 import EditPlayerForm from "./components/EditPlayerForm";
 import PageContext from "./context/pageContext";
+import EditTeamForm from "./components/EditTeamForm";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("teams");
@@ -39,6 +40,7 @@ function App() {
               teams.map((team, id) => <Players key={id} id={id} />
             )}
             {currentPage === 'edit-player' && <EditPlayerForm teamId={teamId}/> }
+            {currentPage === 'edit-team' && <EditTeamForm teamId={teamId}/> }
           </div>
         </PlayerContext.Provider>
       </TeamsContext.Provider>

@@ -22,8 +22,7 @@ function EditPlayerForm ({teamId}) {
           position: position
       }
       let newTeams = [...teams];
-      newTeams[teamId].players.splice(playerId, 1); // on supprime les anciennes info du joueur
-      newTeams[newTeamId].players.push(player); // on insert les nouvelles info
+      newTeams[teamId].players[playerId]= player;
       setTeams(newTeams);
       setPlayerId(null);
       setCurrentPage('players');
@@ -34,7 +33,7 @@ function EditPlayerForm ({teamId}) {
 
   return (
     <>
-        <div>
+        <div className="container">
             <h2>Modifier un joueur</h2>
             <form onSubmit={handleSubmit}>
                 <label>Nom du joueur: </label><br/>
