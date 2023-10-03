@@ -28,14 +28,9 @@ function App() {
       {teams[0]&&(
         <>
           <NewPlayersFrom />
+          <Players id={displayTeam}/>
         </>
       )}
-      {/* {teams.map((team, id) => (
-        <>
-        <Players id={id}/>
-        </>
-      ))} */}
-      <Players id={displayTeam}/>
     </TeamsContext.Provider>
 
   );
