@@ -14,6 +14,7 @@ function Navbar () {
             <button onClick={() => setCurrentPage("new-player")}>New Player</button>
           )}
           <button onClick={() => setCurrentPage("players")}>Players</button>
+          <button onClick={() => setCurrentPage("standings")}>Standings</button>
         </div>
     </>
   )

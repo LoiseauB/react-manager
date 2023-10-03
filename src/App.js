@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import "./App.scss";
 import Header from "./components/Header";
 import NewTeamForm from "./components/NewTeamForm";
@@ -11,6 +11,7 @@ import EditPlayerForm from "./components/EditPlayerForm";
 import PageContext from "./context/pageContext";
 import EditTeamForm from "./components/EditTeamForm";
 import Navbar from "./components/Navbar";
+import Standings from "./components/Standings";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("teams");
@@ -19,6 +20,9 @@ function App() {
   );
   const [playerId, setPlayerId] = useState(null);
   const [teamId, setTeamId] = useState(null);
+  useEffect(() => {
+    localStorage.setItem("teams", JSON.stringify(teams));
+  },[teams])
 
   return (
     <PageContext.Provider value={{ setCurrentPage }}>
@@ -27,6 +31,7 @@ function App() {
         <Navbar />
         <PlayerContext.Provider value={{ playerId, setPlayerId }}>
           <div className="content">
+            {currentPage === "standings" && <Standings />}
             {currentPage === "teams" && <Teams teams={teams} />}
             {currentPage === "new-team" && <NewTeamForm />}
             {currentPage === "new-player" && teams[0] && <NewPlayersForm />}
