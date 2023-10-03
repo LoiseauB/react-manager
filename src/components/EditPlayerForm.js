@@ -10,7 +10,6 @@ function EditPlayerForm ({teamId}) {
   const [name, setName] = useState(player.name);
   const [age, setAge] = useState(player.age);
   const [position, setPosition] = useState(player.position);
-  const [newTeamId, setNewTeamId] = useState(teamId);
   const {setCurrentPage} = useContext(PageContext);
 
   const handleSubmit = (e) => {
@@ -42,14 +41,6 @@ function EditPlayerForm ({teamId}) {
                 <input type="number" value={age} onChange={e => setAge(e.target.valueAsNumber)}></input><br/>
                 <label>Poste du joueur: </label><br/>
                 <input type="text" value={position} onChange={e => setPosition(e.target.value)}></input><br/>
-                <label>Choix de l'équipe: </label><br/>
-                <select type="select" onChange={(e)=> {setNewTeamId(e.target.value)}} >
-                    {teams.map((team, id) => (
-                        <>
-                            <option value={id}>{team.name}</option>
-                        </>
-                    ))}
-                </select><br/>
                 <button type="submit">Modifier</button>
             </form>
         </div>
