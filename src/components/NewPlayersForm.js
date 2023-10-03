@@ -28,7 +28,7 @@ function NewPlayersFrom() {
 
     return (
         <>
-            <div>
+            <div className="container">
                 <h2>Ajouter un nouveau joueur</h2>
                 <form onSubmit={handleCreatePlayer}>
                     <label>Nom du joueur: </label><br/>

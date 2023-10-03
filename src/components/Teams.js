@@ -4,6 +4,7 @@ function Teams({ teams }) {
 
     return (
         <>
+        <div className="container">
             <ul>
                 {teams.map(team => (
                     <>
@@ -24,6 +25,7 @@ function Teams({ teams }) {
                     </>
                 ))}
             </ul>
+            </div>
         </>
     );
 };

@@ -1,10 +1,128 @@
-.container {
-    max-width: 1200px;
-    margin: 0 auto; 
-    padding: 20px; 
-    box-sizing: border-box;
-}
+body {
+    background-image: url('asset/foot.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-position: center center; 
+  }
+.navbar {
+    background-color: #12161adb;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+  }
+  
+  .navbar button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+ 
+  .content {
+    margin: 20px;
+  }
+  .title{
+    display: flex;
+    justify-content: center;
+      h1{
+          font-family: 'Courier New', Courier, monospace;
+          
+      }
+  }
+  .container {
+    font-family: 'Courier New', Courier, monospace;
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff9b;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+ 
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
 
-li {
-    list-style-type: none;
-}
+  label {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+
+  input,
+  select {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    background-color: #0e171f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+
+  .alert {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+  }
+  
+
+  li span {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+ 
+  li + li {
+    margin-top: 10px;
+  }
