@@ -6,12 +6,15 @@ import Teams from "./components/Teams";
 import TeamsContext from "./context/teamsContext";
 import NewPlayersForm from "./components/NewPlayersForm";
 import Players from "./components/Players";
+import PlayerContext from "./context/playerContext";
+import EditPlayerForm from "./components/EditPlayerForm";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("teams");
   const [teams, setTeams] = useState(
     JSON.parse(localStorage.getItem("teams")) || []
   );
+  const [playerId, setPlayerId] = useState(null);
 
   const changePage = (page) => {
     setCurrentPage(page);
