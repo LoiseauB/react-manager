@@ -10,6 +10,7 @@ import PlayerContext from "./context/playerContext";
 import EditPlayerForm from "./components/EditPlayerForm";
 import PageContext from "./context/pageContext";
 import EditTeamForm from "./components/EditTeamForm";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("teams");
@@ -27,14 +28,7 @@ function App() {
     <PageContext.Provider value={{ setCurrentPage }}>
       <TeamsContext.Provider value={{ teams, setTeams, setTeamId }}>
         <Header />
-        <div className="navbar">
-          <button onClick={() => setCurrentPage("teams")}>Teams</button>
-          <button onClick={() => setCurrentPage("new-team")}>New Team</button>
-          {teams[0] && (
-            <button onClick={() => setCurrentPage("new-player")}>New Player</button>
-          )}
-          <button onClick={() => setCurrentPage("players")}>Players</button>
-        </div>
+        <Navbar />
         <PlayerContext.Provider value={{ playerId, setPlayerId }}>
           <div className="content">
             {currentPage === "teams" && <Teams teams={teams} />}
