@@ -22,7 +22,7 @@ function NewTeamForm() {
     return (
         <>
             <div className="container">
-                <h2>Créer une nouelle équipe</h2>
+                <h2>Créer une nouvelle équipe</h2>
                 <form onSubmit={handleCreateTeam}>
                     <label>Nom de l'équipe :</label><br />
                     <input type="text" value={teamName} onChange={(e) => setTeamName(e.target.value)}></input><br />

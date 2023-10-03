@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.scss";
 import Header from "./components/Header";
 import NewTeamForm from "./components/NewTeamForm";
@@ -18,10 +18,6 @@ function App() {
   );
   const [playerId, setPlayerId] = useState(null);
   const [teamId, setTeamId] = useState(null);
-
-  useEffect(() => {
-    localStorage.setItem("teams", JSON.stringify(teams));
-  },[teams])
 
   return (
     <PageContext.Provider value={{ setCurrentPage }}>
