@@ -25,6 +25,7 @@ function Teams() {
             <li key={index}>
               <span>Nom de l'équipe:</span> {team.name} <br />
               <span>Couleur du maillot:</span> {team.color} <br />
+              <button onClick={()=> navigate(`/teams/${index}`)}>Détails</button>
               <button onClick={()=>handleClick(index)}>Modifier</button>
               <button onClick={()=>handleDelete(index)}>Supprimer</button>
             </li>

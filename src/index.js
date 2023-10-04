@@ -15,6 +15,7 @@ import Players from './components/Players';
 import Standings from './components/Standings';
 import EditPlayerForm from './components/EditPlayerForm'
 import EditTeamForm from './components/EditTeamForm'
+import TeamDetails from './components/TeamDetails';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/edit-team",
         element: <EditTeamForm/>
+      },
+      {
+        path: "/teams/:id",
+        element: <TeamDetails />
       }
      
     ]
