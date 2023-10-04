@@ -3,12 +3,11 @@ import { useEffect, useState } from "react";
 function Standings(){
  const [matchs, setMatchs] = useState([]);
  useEffect(()=> {
-    fetch('https://livescore-api.com/api-client/scores/history.json?competition_id=5&key=bHn7hVfhQbE4NPsR&secret=hyfvSAbE9tSs1OtdvRkNMA4DMJHzzaqQ')
+    const url = 'https://livescore-api.com/api-client/scores/history.json?competition_id=5&key='+process.env.REACT_APP_API_KEY+'&secret='+process.env.REACT_APP_API_SECRET
+    fetch(url)
    .then(response => response.json())
    .then(data => setMatchs(data.data.match));
  })
-
- console.log(matchs[0])
     return(
         <>
          <div className="container">
