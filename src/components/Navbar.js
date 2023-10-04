@@ -11,8 +11,8 @@ function Navbar () {
     <>
       <div className="navbar">
           <button onClick={() => setCurrentPage("teams")}>Teams</button>
-          <button onClick={() => setCurrentPage("new-team")}>New Team</button>
-          {teams[0] && (
+          {LogOn && <button onClick={() => setCurrentPage("new-team")}>New Team</button>}
+          {teams[0] &&  LogOn && (
             <button onClick={() => setCurrentPage("new-player")}>New Player</button>
           )}
           <button onClick={() => setCurrentPage("players")}>Players</button>
