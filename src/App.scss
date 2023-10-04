@@ -90,7 +90,18 @@ body {
     background-color: #0e151c73;
   }
   
-
+ table{
+  width: 100%;
+  font-weight: bold;
+  td{
+    background-color: #ffffff;
+    
+  }
+  th{
+    color: #fff;
+    background-color: #000000;
+  }
+ }
   .alert {
     color: red;
     margin-top: 10px;

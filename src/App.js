@@ -12,9 +12,12 @@ import PageContext from "./context/pageContext";
 import EditTeamForm from "./components/EditTeamForm";
 import Navbar from "./components/Navbar";
 import Standings from "./components/Standings";
+import Login from "./components/Login";
+import LoginContext from "./context/LoginContext";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("teams");
+  const [LogOn, setLogOn] = useState(false);
   const [teams, setTeams] = useState(
     JSON.parse(localStorage.getItem("teams")) || []
   );
@@ -23,11 +26,12 @@ function App() {
   useEffect(() => {
     localStorage.setItem("teams", JSON.stringify(teams));
   },[teams])
-
+  
   return (
     <PageContext.Provider value={{ setCurrentPage }}>
       <TeamsContext.Provider value={{ teams, setTeams, setTeamId }}>
         <Header />
+        <LoginContext.Provider value={{LogOn, setLogOn}}>
         <Navbar />
         <PlayerContext.Provider value={{ playerId, setPlayerId }}>
           <div className="content">
@@ -40,8 +44,10 @@ function App() {
             )}
             {currentPage === 'edit-player' && <EditPlayerForm teamId={teamId}/> }
             {currentPage === 'edit-team' && <EditTeamForm teamId={teamId}/> }
+            {currentPage === 'login' && <Login /> }
           </div>
         </PlayerContext.Provider>
+        </LoginContext.Provider>
       </TeamsContext.Provider>
     </PageContext.Provider>
   );
