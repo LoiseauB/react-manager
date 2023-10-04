@@ -4,8 +4,8 @@ import PlayerContext from "../context/playerContext";
 import { useNavigate } from "react-router-dom";
 
 
-function EditPlayerForm ({teamId}) {
-  const {teams, setTeams} = useContext(TeamsContext);
+function EditPlayerForm () {
+  const {teams, setTeams, teamId} = useContext(TeamsContext);
   const {playerId, setPlayerId} = useContext(PlayerContext);
   let player = teams[teamId].players[playerId];
   const [name, setName] = useState(player.name);

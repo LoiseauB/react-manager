@@ -2,8 +2,8 @@ import { useContext, useState } from "react";
 import TeamsContext from "../context/teamsContext";
 import { useNavigate } from "react-router-dom";
 
-function EditTeamForm({teamId}){
-    const {teams, setTeams} = useContext(TeamsContext);
+function EditTeamForm(){
+    const {teams, setTeams, teamId} = useContext(TeamsContext);
     const [team, setTeam] = useState(teams[teamId]);
     const [teamName, setTeamName] = useState(team.name);
     const [TeamColor, setTeamColor] = useState(team.color);

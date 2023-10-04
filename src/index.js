@@ -13,7 +13,8 @@ import NewTeamForm from './components/NewTeamForm';
 import NewPlayersFrom from './components/NewPlayersForm';
 import Players from './components/Players';
 import Standings from './components/Standings';
-
+import EditPlayerForm from './components/EditPlayerForm'
+import EditTeamForm from './components/EditTeamForm'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,6 +43,14 @@ const router = createBrowserRouter([
       {
         path: "/standings",
         element: <Standings/>
+      },
+      {
+        path: "/edit-player",
+        element: <EditPlayerForm/>
+      },
+      {
+        path: "/edit-team",
+        element: <EditTeamForm/>
       }
      
     ]
