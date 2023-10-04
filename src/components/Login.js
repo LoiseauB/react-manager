@@ -44,7 +44,7 @@ function Login() {
             />
           </div>
           {error && <p className="error">{error}</p>}
-          <button type="submit">Se connecter</button>
+          <button className="button"type="submit">Se connecter</button>
         </form>
       
     </div>

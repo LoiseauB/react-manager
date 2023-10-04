@@ -7,7 +7,7 @@ function Players() {
   const { teams, setTeamId, setTeams } = useContext(TeamsContext);
   const { setPlayerId } = useContext(PlayerContext);
   const navigate = useNavigate();
-  
+
   const handleClick = (index, teamId) => {
     setPlayerId(index);
     setTeamId(teamId);
@@ -26,16 +26,15 @@ function Players() {
           <h2>Joueurs de l'équipe {team.name}</h2>
           <ul>
             {team.players.map((player, index) => (
-              <li key={player.id}>
+              <li key={index}>
                 <span>Nom:</span> {player.name} <br />
-                <span>Age:</span> {player.age} <br />
-                <span>Poste:</span> {player.position} <br />
+                <button onClick={() => navigate(`/players/${id}/${index}`)}>Détails</button>
                 <button onClick={() => handleClick(index, id)}>Modifier</button>
                 <button onClick={() => handleDelete(index, id)}>Supprimer</button>
               </li>
             ))}
           </ul>
-      </>
+        </>
       ))}
     </div>
   );
