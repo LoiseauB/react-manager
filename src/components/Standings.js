@@ -1,30 +1,32 @@
 import { useEffect, useState } from "react";
 
 function Standings(){
- const [standings, setStandings] = useState([]);
+ const [matchs, setMatchs] = useState([]);
  useEffect(()=> {
-    fetch('https://football-standings-api-pqotco6hc-azharimm.vercel.app/leagues/fra.1/standings?season=2023')
+    fetch('https://livescore-api.com/api-client/scores/history.json?competition_id=5&key=bHn7hVfhQbE4NPsR&secret=hyfvSAbE9tSs1OtdvRkNMA4DMJHzzaqQ')
    .then(response => response.json())
-   .then(data => setStandings(data.data.standings));
+   .then(data => setMatchs(data.data.match));
  })
 
- console.log(standings)
+ console.log(matchs[0])
     return(
         <>
          <div className="container">
-            <h2>Classements de la ligue 1</h2>
+            <h2>Scores de la ligue 1</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Team</th>
-                        <th>Rank</th>
+                        <th>Domicile</th>
+                        <th>Score</th>
+                        <th>Visiteur</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {standings.map(({team, note}, index)=>
+                    {matchs.map((match, index)=>
                     <tr key={index}>
-                        <td>{team ? team.name : "N/A"}</td>
-                        <td>{note ? note.rank : "N/A"}</td>
+                        <td>{match.home_name ? match.home_name : "N/A"}</td>
+                        <td>{match.et_score ? match.et_score : "N/A"}</td>
+                        <td>{match.away_name ? match.away_name : "N/A"}</td>
                     </tr>
                     )}
                 </tbody>
