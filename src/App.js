@@ -28,28 +28,28 @@ function App() {
   },[teams])
   
   return (
-    <PageContext.Provider value={{ setCurrentPage }}>
-      <TeamsContext.Provider value={{ teams, setTeams, setTeamId }}>
-        <Header />
-        <LoginContext.Provider value={{LogOn, setLogOn}}>
-        <Navbar />
-        <PlayerContext.Provider value={{ playerId, setPlayerId }}>
-          <div className="content">
-            {currentPage === "standings" && <Standings />}
-            {currentPage === "teams" && <Teams teams={teams} />}
-            {currentPage === "new-team" && <NewTeamForm />}
-            {currentPage === "new-player" && teams[0] && <NewPlayersForm />}
-            {currentPage === "players" &&
-              teams.map((team, id) => <Players key={id} id={id} />
-            )}
-            {currentPage === 'edit-player' && <EditPlayerForm teamId={teamId}/> }
-            {currentPage === 'edit-team' && <EditTeamForm teamId={teamId}/> }
-            {currentPage === 'login' && <Login /> }
-          </div>
-        </PlayerContext.Provider>
-        </LoginContext.Provider>
-      </TeamsContext.Provider>
-    </PageContext.Provider>
+    // <PageContext.Provider value={{ setCurrentPage }}>
+    //   <TeamsContext.Provider value={{ teams, setTeams, setTeamId }}>
+    //     <Header />
+    //     <LoginContext.Provider value={{LogOn, setLogOn}}>
+    //     <Navbar />
+    //     <PlayerContext.Provider value={{ playerId, setPlayerId }}>
+    //       <div className="content">
+    //         {currentPage === "standings" && <Standings />}
+    //         {currentPage === "teams" && <Teams teams={teams} />}
+    //         {currentPage === "new-team" && <NewTeamForm />}
+    //         {currentPage === "new-player" && teams[0] && <NewPlayersForm />}
+    //         {currentPage === "players" &&
+    //           teams.map((team, id) => <Players key={id} id={id} />
+    //         )}
+    //         {currentPage === 'edit-player' && <EditPlayerForm teamId={teamId}/> }
+    //         {currentPage === 'edit-team' && <EditTeamForm teamId={teamId}/> }
+    //         {currentPage === 'login' && <Login /> }
+    //       </div>
+    //     </PlayerContext.Provider>
+    //     </LoginContext.Provider>
+    //   </TeamsContext.Provider>
+    // </PageContext.Provider>
   );
 }
 

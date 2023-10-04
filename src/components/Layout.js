@@ -13,6 +13,7 @@ function Layout() {
     );
     const [playerId, setPlayerId] = useState(null);
     const [teamId, setTeamId] = useState(null);
+    
     useEffect(() => {
         localStorage.setItem("teams", JSON.stringify(teams));
     }, [teams])

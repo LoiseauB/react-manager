@@ -7,6 +7,7 @@ function Players() {
   const { teams, setTeamId, setTeams, teamId } = useContext(TeamsContext);
   const { setPlayerId } = useContext(PlayerContext);
   const navigate = useNavigate();
+
   const handleClick = (index) => {
     setPlayerId(index);
     setTeamId(teamId);
