@@ -9,6 +9,10 @@ import "./App.scss";
 import Teams from './components/Teams';
 import Layout from './components/Layout';
 import Login from './components/Login';
+import NewTeamForm from './components/NewTeamForm';
+import NewPlayersFrom from './components/NewPlayersForm';
+import Players from './components/Players';
+import Standings from './components/Standings';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +26,22 @@ const router = createBrowserRouter([
       {
         path: "/teams",
         element: <Teams/>
+      },
+      {
+        path: "/new-team",
+        element: <NewTeamForm/>
+      },
+      {
+        path: "/new-player",
+        element: <NewPlayersFrom/>
+      },
+      {
+        path: "/players",
+        element: <Players/>
+      },
+      {
+        path: "/standings",
+        element: <Standings/>
       }
      
     ]

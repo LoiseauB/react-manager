@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import TeamsContext from "../context/teamsContext";
-import PageContext from "../context/pageContext";
+import { useNavigate } from "react-router-dom";
 
 function EditTeamForm({teamId}){
     const {teams, setTeams} = useContext(TeamsContext);
     const [team, setTeam] = useState(teams[teamId]);
     const [teamName, setTeamName] = useState(team.name);
     const [TeamColor, setTeamColor] = useState(team.color);
-    const {setCurrentPage} = useContext(PageContext);
+    const navigate = useNavigate();
     const handleCreateTeam = (e) => {
         e.preventDefault();
         const newTeam = {
@@ -18,7 +18,7 @@ function EditTeamForm({teamId}){
         let addTeam = [...teams];
         addTeam[teamId]= newTeam;
         setTeams(addTeam);
-        setCurrentPage('teams');
+        navigate('/teams');
     }
 
     return(

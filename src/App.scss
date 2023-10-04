@@ -12,7 +12,8 @@ body {
     padding: 10px;
   }
   
-  .navbar button {
+  .navbar a {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background-color: transparent;
     border: none;
     color: white;
@@ -22,7 +23,7 @@ body {
     transition: background-color 0.3s ease;
   }
   
-  .navbar button:hover {
+  .navbar a:hover {
     background-color: rgba(255, 255, 255, 0.2);
   }
   
@@ -46,6 +47,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #ffffff9b;
+    
   }
   
   form {
@@ -73,7 +75,22 @@ body {
     border: 1px solid #ccc;
     border-radius: 3px;
   }
+  a {
+    background-color: #0e171f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-decoration: none;
+  }
   
+
+  a:hover {
+    background-color: #0e151c73;
+  }
   button {
     background-color: #0e171f;
     color: #fff;

@@ -18,10 +18,6 @@ function Login() {
       setError("Nom d'utilisateur ou mot de passe incorrect");
     }
   };
-
-  const handleLogout = () => {
-    setLogOn(false);
-  };
   if(LogOn){
     return navigate("/teams")
   };

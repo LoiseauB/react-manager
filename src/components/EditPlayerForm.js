@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import TeamsContext from "../context/teamsContext";
 import PlayerContext from "../context/playerContext";
-import PageContext from "../context/pageContext";
+import { useNavigate } from "react-router-dom";
+
 
 function EditPlayerForm ({teamId}) {
   const {teams, setTeams} = useContext(TeamsContext);
@@ -10,8 +11,7 @@ function EditPlayerForm ({teamId}) {
   const [name, setName] = useState(player.name);
   const [age, setAge] = useState(player.age);
   const [position, setPosition] = useState(player.position);
-  const {setCurrentPage} = useContext(PageContext);
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     if(age <40) {
@@ -24,7 +24,7 @@ function EditPlayerForm ({teamId}) {
       newTeams[teamId].players[playerId]= player;
       setTeams(newTeams);
       setPlayerId(null);
-      setCurrentPage('players');
+      navigate('/players');
     }else{
       alert('Trop vieux')
     }

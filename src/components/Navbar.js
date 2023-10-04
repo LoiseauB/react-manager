@@ -1,25 +1,24 @@
 import { useContext } from "react"
-import PageContext from "../context/pageContext"
+import { Link } from "react-router-dom";
 import TeamsContext from "../context/teamsContext";
 import LoginContext from "../context/LoginContext";
 
 function Navbar () {
-  const {setCurrentPage} = useContext(PageContext);
   const {teams} = useContext(TeamsContext);
   const {LogOn, setLogOn} = useContext(LoginContext);
   return (
     <>
       <div className="navbar">
-          <button onClick={() => setCurrentPage("teams")}>Teams</button>
-          {LogOn && <button onClick={() => setCurrentPage("new-team")}>New Team</button>}
+          <Link to="/teams">Teams</Link>
+          {LogOn && <Link to ="/new-team">New Team</Link>}
           {teams[0] &&  LogOn && (
-            <button onClick={() => setCurrentPage("new-player")}>New Player</button>
+            <Link to="/new-player">New Player</Link>
           )}
-          <button onClick={() => setCurrentPage("players")}>Players</button>
-          <button onClick={() => setCurrentPage("standings")}>Standings</button>
+          <Link to="/players">Players</Link>
+          <Link to="/standings">Standings</Link>
           {LogOn ? (
           <button onClick={() => setLogOn(false)}>Deconnexion</button>
-          ):(<button onClick={() => setCurrentPage("login")}>Connexion</button>)}
+          ):(<Link to="/">Connexion</Link>)}
         </div>
     </>
   )

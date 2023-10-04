@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import TeamsContext from "../context/teamsContext";
-import PageContext from "../context/pageContext";
+import { useNavigate } from "react-router-dom";
+
 
 
 function Teams() {
     const{teams, setTeamId, setTeams} = useContext(TeamsContext);
-    const {setCurrentPage} = useContext(PageContext);
+    const navigate = useNavigate();
     const handleClick = (index) => {
         setTeamId(index);
-        setCurrentPage('edit-team')
+        navigate('/edit-team');
     }
     const handleDelete = (index) => {
         let newTeams = [...teams];
