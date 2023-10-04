@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import NewTeamForm from "./NewTeamForm";
 import LoginContext from "../context/LoginContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const {LogOn, setLogOn} = useContext(LoginContext);
-
+    const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     if (username === "admin" && password === "admin") {
@@ -22,7 +23,7 @@ function Login() {
     setLogOn(false);
   };
   if(LogOn){
-    return <NewTeamForm/>
+    return navigate("/teams")
   };
   return (
     <div className="container">
