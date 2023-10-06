@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { editTeam } from "../reducers/action";
 
 function EditTeamForm(){
     const teams = useSelector(state => state.teams);
-    const teamId = useSelector(state => state.teamId);
-    console.log(teams);
+    const {teamId} = useParams();
     const [teamName, setTeamName] = useState(teams[teamId].name);
     const [TeamColor, setTeamColor] = useState(teams[teamId].color);
     const navigate = useNavigate();

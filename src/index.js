@@ -46,11 +46,11 @@ const router = createBrowserRouter([
         element: <Standings/>
       },
       {
-        path: "/edit-player",
+        path: "/edit-player/:teamId/:playerId",
         element: <EditPlayerForm/>
       },
       {
-        path: "/edit-team",
+        path: "/edit-team/:teamId",
         element: <EditTeamForm/>
       },
       {

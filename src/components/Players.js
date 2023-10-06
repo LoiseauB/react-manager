@@ -1,17 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deletePlayer, editPlayerID, editTeamId } from "../reducers/action";
+import { deletePlayer } from "../reducers/action";
 
 function Players() {
   const teams = useSelector(state => state.teams);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleClick = (index, teamId) => {
-    dispatch(editPlayerID(index));
-    dispatch(editTeamId(teamId));
-    navigate('/edit-player')
-  }
   const handleDelete = (index, teamId) => {
     dispatch(deletePlayer(teamId, index));
   }
@@ -26,7 +21,7 @@ function Players() {
               <li key={index}>
                 <span>Nom:</span> {player.name} <br />
                 <button onClick={() => navigate(`/players/${teamId}/${index}`)}>Détails</button>
-                <button onClick={() => handleClick(index, teamId)}>Modifier</button>
+                <button onClick={() => navigate(`/edit-player/${teamId}/${index}`)}>Modifier</button>
                 <button onClick={() => handleDelete(index, teamId)}>Supprimer</button>
               </li>
             ))}

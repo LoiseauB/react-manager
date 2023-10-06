@@ -30,9 +30,10 @@ const AppReducer = (state = initialState, action) => {
         }
 
         case 'DELETE_TEAM': {
-            let newState = { ...state };
-            newState.teams.splice(action.payload.teamId, 1);
-            return newState;
+            return {
+                ...state, 
+                teams: state.teams.filter((team, index) => index !== action.payload.teamId )
+            };
         }
 
         case 'EDIT_TEAM': {
@@ -63,9 +64,14 @@ const AppReducer = (state = initialState, action) => {
          /*----- TEAM PLAYERS CASE -----*/
 
         case 'DELETE_PLAYER': {
-            let newState = { ...state };
-            newState.teams[action.payload.teamId].players.splice(action.payload.playerId, 1);
-            return newState;
+            const teamId = action.payload.teamId;
+            const playerId = action.payload.playerId;
+            let newStatePlayers = [...state.teams[teamId].players];
+            newStatePlayers.splice(playerId, 1);
+            let newStateTeam= {...state.teams[teamId], players: newStatePlayers}
+            let newStateTeams = [...state.teams];
+            newStateTeams[teamId] = newStateTeam;
+            return {...state, teams: newStateTeams};
         }
 
         case 'CREATE_PLAYER': {

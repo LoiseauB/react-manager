@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTeam, editTeam } from "../reducers/action";
+import { deleteTeam } from "../reducers/action";
 
 
 
@@ -9,10 +9,6 @@ function Teams() {
     const dispatch = useDispatch();
     const teams = useSelector(state => state.teams);
 
-    const handleClick = (index) => {
-        dispatch(editTeam(index));
-        navigate('/edit-team');
-    }
     const handleDelete = (index) => {
         dispatch(deleteTeam(index));
       }
@@ -26,7 +22,7 @@ function Teams() {
               <span>Nom de l'équipe:</span> {team.name} <br />
               <span>Couleur du maillot:</span> {team.color} <br />
               <button onClick={()=> navigate(`/teams/${index}`)}>Détails</button>
-              <button onClick={()=>handleClick(index)}>Modifier</button>
+              <button onClick={()=>navigate(`/edit-team/${index}`)}>Modifier</button>
               <button onClick={()=>handleDelete(index)}>Supprimer</button>
             </li>
           ))}

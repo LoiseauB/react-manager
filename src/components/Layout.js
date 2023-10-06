@@ -4,11 +4,11 @@ import Navbar from "./Navbar";
 import Header from "./Header";
 
 function Layout({children}) {
-    const teams = useSelector(state => state.teams);
+    const state = useSelector(state => state);
     
     useEffect(() => {
-        localStorage.setItem("teams", JSON.stringify(teams));
-    }, [teams])
+        localStorage.setItem("teams", JSON.stringify(state.teams));
+    }, [state])
 
     return (
         <>

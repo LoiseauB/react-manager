@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { editPlayer, editPlayerID } from "../reducers/action";
+import { editPlayer } from "../reducers/action";
 
 
 function EditPlayerForm () {
   const teams = useSelector(state => state.teams);
-  const teamId = useSelector(state => state.teamId);
-  const playerId = useSelector(state => state.playerId);
+  const {teamId} = useParams();
+  const {playerId} = useParams();
 
   let player = teams[teamId].players[playerId];
 
@@ -21,7 +21,6 @@ function EditPlayerForm () {
     e.preventDefault();
     if(age <40) {
       dispatch(editPlayer(teamId, playerId, name, age, position));
-      dispatch(editPlayerID(null));
       navigate('/players');
     }else{
       alert('Trop vieux')
