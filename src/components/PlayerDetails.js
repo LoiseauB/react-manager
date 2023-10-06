@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import TeamsContext from "../context/teamsContext";
+import { useSelector } from "react-redux";
 
 function PlayerDetails() {
-    const { teams } = useContext(TeamsContext);
+    const teams = useSelector(state => state.teams) ;
     const { teamId, id } = useParams();
-    console.log(teams[teamId].players[id].name);
+
     return (
         <div className="container">
             <h2>Détail :</h2>

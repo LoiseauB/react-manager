@@ -1,23 +1,19 @@
-import { useContext, useState } from "react";
-import TeamsContext from "../context/teamsContext";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { editTeam } from "../reducers/action";
 
 function EditTeamForm(){
-    const {teams, setTeams, teamId} = useContext(TeamsContext);
-    const [team, setTeam] = useState(teams[teamId]);
-    const [teamName, setTeamName] = useState(team.name);
-    const [TeamColor, setTeamColor] = useState(team.color);
+    const teams = useSelector(state => state.teams);
+    const teamId = useSelector(state => state.teamId);
+    const [teamName, setTeamName] = useState(teams[teamId].name);
+    const [TeamColor, setTeamColor] = useState(teams[teamId].color);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const handleCreateTeam = (e) => {
         e.preventDefault();
-        const newTeam = {
-            name: teamName,
-            color: TeamColor,
-            players: []
-        };
-        let addTeam = [...teams];
-        addTeam[teamId]= newTeam;
-        setTeams(addTeam);
+        dispatch(editTeam(teamId, teamName, TeamColor))
         navigate('/teams');
     }
 

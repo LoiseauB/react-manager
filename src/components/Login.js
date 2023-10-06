@@ -1,24 +1,26 @@
-import React, { useContext, useState } from "react";
-import NewTeamForm from "./NewTeamForm";
-import LoginContext from "../context/LoginContext";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { login } from "../reducers/action";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const {LogOn, setLogOn} = useContext(LoginContext);
-    const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isLogin = useSelector(state => state.login);
+  const navigate = useNavigate();
+
   const handleLogin = (e) => {
     e.preventDefault();
     if (username === "admin" && password === "admin") {
       setError(""); 
-      setLogOn(true);
+      dispatch(login());
     } else {
       setError("Nom d'utilisateur ou mot de passe incorrect");
     }
   };
-  if(LogOn){
+  if(isLogin){
     return navigate("/teams")
   };
   return (

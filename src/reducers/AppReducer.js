@@ -1,5 +1,6 @@
 const initialState = {
     login: false,
+    teamId: null,
     player: null,
     teams: []
 };
@@ -12,9 +13,9 @@ const AppReducer = (state = initialState, action) => {
             newLogin.login = !newLogin.login;
             return newLogin;
         }
-        default: return state;
+        
 
-
+        /*------ TEAM CASE -----*/
 
         case 'CREATE_TEAM': {
             let newTeam = {
@@ -30,7 +31,7 @@ const AppReducer = (state = initialState, action) => {
 
         case 'DELETE_TEAM': {
             let newState = { ...state };
-            newState.teams.splice(action.payload.id, 1);
+            newState.teams.splice(action.payload.teamId, 1);
             return newState;
         }
 
@@ -38,20 +39,22 @@ const AppReducer = (state = initialState, action) => {
             let newTeam = {
                 name: action.payload.name,
                 color: action.payload.color,
-                players: []
+                players: [...state.teams[action.payload.teamId].players]
             }
             let newState = { ...state };
             newState.teams[action.payload.teamId] = newTeam;
             return newState;
         }
 
-
+        /*----- PLAYER CASE -----*/
 
         case 'PLAYER': {
             let newPlayer = { ...state };
-            newPlayer.player = action.payload.id;
+            newPlayer.player = action.payload.playerId;
             return newPlayer;
         }
+
+         /*----- TEAM PLAYERS CASE -----*/
 
         case 'DELETE_PLAYER': {
             let newState = { ...state };
@@ -80,6 +83,16 @@ const AppReducer = (state = initialState, action) => {
             newState.teams[action.payload.teamId].players[action.payload.playerId] = newPlayers;
             return newState;
         }
+
+        /*----- TEAM_ID CASE -----*/
+
+        case 'TEAM_ID': {
+            let newState = { ...state };
+            newState.teamId = action.payload.teamId;
+            return newState;
+        }
+
+        default: return state;
     }
 
 

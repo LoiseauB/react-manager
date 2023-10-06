@@ -1,22 +1,18 @@
-import { useContext, useState } from "react";
-import TeamsContext from "../context/teamsContext";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createTeam } from "../reducers/action";
+import { useNavigate } from "react-router-dom";
 
 function NewTeamForm() {
     const [teamName, setTeamName] = useState('');
-    const [TeamColor, setTeamColor] = useState('');
-
-    const { teams, setTeams } = useContext(TeamsContext);
+    const [teamColor, setTeamColor] = useState('');
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleCreateTeam = (e) => {
         e.preventDefault();
-        const newTeam = {
-            name: teamName,
-            color: TeamColor,
-            players: []
-        };
-        setTeams([...teams, newTeam]);
-        setTeamName('');
-        setTeamColor('');
+        dispatch(createTeam(teamName, teamColor));
+        navigate('/teams');
     }
 
     return (
@@ -27,9 +23,8 @@ function NewTeamForm() {
                     <label>Nom de l'équipe :</label><br />
                     <input type="text" value={teamName} onChange={(e) => setTeamName(e.target.value)}></input><br />
                     <label>Couleur du maillot :</label><br />
-                    <input type="text" value={TeamColor} onChange={(e) => setTeamColor(e.target.value)}></input><br />
+                    <input type="text" value={teamColor} onChange={(e) => setTeamColor(e.target.value)}></input><br />
                     <button type="submit">Créer</button>
-
                 </form>
             </div>
         </>

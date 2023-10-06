@@ -1,20 +1,20 @@
-import { useContext } from "react";
-import TeamsContext from "../context/teamsContext";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTeam, editTeam } from "../reducers/action";
 
 
 
 function Teams() {
-    const{teams, setTeamId, setTeams} = useContext(TeamsContext);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const teams = useSelector(state => state.teams);
+
     const handleClick = (index) => {
-        setTeamId(index);
+        dispatch(editTeam(index));
         navigate('/edit-team');
     }
     const handleDelete = (index) => {
-        let newTeams = [...teams];
-        newTeams.splice(index, 1);
-        setTeams(newTeams);
+        dispatch(deleteTeam(index));
       }
     return (
         <>

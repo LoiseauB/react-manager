@@ -1,29 +1,27 @@
-import { useContext, useState } from "react";
-import TeamsContext from "../context/teamsContext";
-import PlayerContext from "../context/playerContext";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { editPlayer, editPlayerID } from "../reducers/action";
 
 
 function EditPlayerForm () {
-  const {teams, setTeams, teamId} = useContext(TeamsContext);
-  const {playerId, setPlayerId} = useContext(PlayerContext);
+  const teams = useSelector(state => state.teams);
+  const teamId = useSelector(state => state.teamId);
+  const playerId = useSelector(state => state.playerId);
+
   let player = teams[teamId].players[playerId];
+
   const [name, setName] = useState(player.name);
   const [age, setAge] = useState(player.age);
   const [position, setPosition] = useState(player.position);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if(age <40) {
-      player = {
-          name: name,
-          age: age,
-          position: position
-      }
-      let newTeams = [...teams];
-      newTeams[teamId].players[playerId]= player;
-      setTeams(newTeams);
-      setPlayerId(null);
+      dispatch(editPlayer(teamId, playerId, name, age, position));
+      dispatch(editPlayerID(null));
       navigate('/players');
     }else{
       alert('Trop vieux')

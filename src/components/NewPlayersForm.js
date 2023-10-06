@@ -1,5 +1,7 @@
-import { useContext, useState } from "react";
-import TeamsContext from "../context/teamsContext";
+import {  useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { createPlayer } from "../reducers/action";
 
 
 function NewPlayersFrom() {
@@ -7,24 +9,19 @@ function NewPlayersFrom() {
     const [age, setAge] = useState(0);
     const [position, setPosition] = useState('');
     const [teamId, setTeamId] = useState(0);
-    const {teams, setTeams} = useContext(TeamsContext);
-    console.log(teamId);
+    const teams = useSelector(state => state.teams);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const handleCreatePlayer = (e) => {
         e.preventDefault();
         if(age <40) {
-        const player = {
-            name: name,
-            age: age,
-            position: position
+            dispatch(createPlayer(teamId, name, age, position));
+            navigate('/teams');
+        }else{
+            alert('Trop vieux');
         }
-        let newTeams = [...teams];
-        newTeams[teamId].players.push(player);
-        setTeams(newTeams);
-        console.log('new player')
-    }else{
-        alert('Trop vieux')
-    }
-    }
+    };
 
     return (
         <>
