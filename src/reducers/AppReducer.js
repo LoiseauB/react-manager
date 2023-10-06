@@ -2,7 +2,7 @@ const initialState = {
     login: false,
     teamId: null,
     player: null,
-    teams: []
+    teams: JSON.parse(localStorage.getItem("teams")) || []
 };
 
 const AppReducer = (state = initialState, action) => {
@@ -43,6 +43,12 @@ const AppReducer = (state = initialState, action) => {
             }
             let newState = { ...state };
             newState.teams[action.payload.teamId] = newTeam;
+            return newState;
+        }
+
+        case 'LOCAL_STORAGE': {
+            let newState = {...state};
+            newState.teams = action.payload.teams;
             return newState;
         }
 

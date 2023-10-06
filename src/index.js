@@ -5,9 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css';
-import "./App.scss";
 import Teams from './components/Teams';
-import Layout from './components/Layout';
 import Login from './components/Login';
 import NewTeamForm from './components/NewTeamForm';
 import NewPlayersFrom from './components/NewPlayersForm';
@@ -17,10 +15,11 @@ import EditPlayerForm from './components/EditPlayerForm'
 import EditTeamForm from './components/EditTeamForm'
 import TeamDetails from './components/TeamDetails';
 import PlayerDetails from './components/PlayerDetails';
+import App from './App';
 const router = createBrowserRouter([
   {
     path: "/",
-    element : <Layout/>,
+    element : <App/>,
     children : [
       {
         path: "/",
@@ -70,7 +69,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
   </React.StrictMode>
 );
 

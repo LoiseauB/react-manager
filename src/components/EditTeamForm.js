@@ -6,6 +6,7 @@ import { editTeam } from "../reducers/action";
 function EditTeamForm(){
     const teams = useSelector(state => state.teams);
     const teamId = useSelector(state => state.teamId);
+    console.log(teams);
     const [teamName, setTeamName] = useState(teams[teamId].name);
     const [TeamColor, setTeamColor] = useState(teams[teamId].color);
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ function EditTeamForm(){
         e.preventDefault();
         dispatch(editTeam(teamId, teamName, TeamColor))
         navigate('/teams');
-    }
+    };
 
     return(
         <>
