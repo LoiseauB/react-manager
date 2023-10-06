@@ -1,7 +1,5 @@
 const initialState = {
     login: false,
-    teamId: null,
-    player: null,
     teams: JSON.parse(localStorage.getItem("teams")) || []
 };
 
@@ -53,14 +51,6 @@ const AppReducer = (state = initialState, action) => {
             return newState;
         }
 
-        /*----- PLAYER CASE -----*/
-
-        case 'PLAYER': {
-            let newPlayer = { ...state };
-            newPlayer.player = action.payload.playerId;
-            return newPlayer;
-        }
-
          /*----- TEAM PLAYERS CASE -----*/
 
         case 'DELETE_PLAYER': {
@@ -93,14 +83,6 @@ const AppReducer = (state = initialState, action) => {
             }
             let newState = { ...state };
             newState.teams[action.payload.teamId].players[action.payload.playerId] = newPlayers;
-            return newState;
-        }
-
-        /*----- TEAM_ID CASE -----*/
-
-        case 'TEAM_ID': {
-            let newState = { ...state };
-            newState.teamId = action.payload.teamId;
             return newState;
         }
 

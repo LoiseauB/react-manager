@@ -55,16 +55,6 @@ export const editPlayer = (teamId, playerId, name, age, position) => ({
   }
 });
 
-export const editTeamId = teamId => ({
-  type: 'TEAM_ID',
-  payload: { teamId }
-});
-
-export const editPlayerID = playerId => ({
-  type: 'PLAYER',
-  payload : { playerId }
-});
-
 export const setLocalTeams = teams => ({
   type: 'LOCAL_STORAGE',
   payload: { teams }
